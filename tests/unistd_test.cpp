@@ -17,6 +17,7 @@
 #define __STDINT_LIMITS
 
 #include <gtest/gtest.h>
+#include "TemporaryFile.h"
 
 #include <errno.h>
 #include <stdint.h>
@@ -130,4 +131,44 @@ TEST(unistd, sbrk_ENOMEM) {
 #endif
   }
 #endif
+}
+
+TEST(unistd, truncate) {
+  TemporaryFile tf;
+  ASSERT_EQ(0, close(tf.fd));
+  ASSERT_EQ(0, truncate(tf.filename, 123));
+
+  struct stat sb;
+  ASSERT_EQ(0, stat(tf.filename, &sb));
+  ASSERT_EQ(123, sb.st_size);
+}
+
+TEST(unistd, truncate64) {
+  TemporaryFile tf;
+  ASSERT_EQ(0, close(tf.fd));
+  ASSERT_EQ(0, truncate64(tf.filename, 123));
+
+  struct stat sb;
+  ASSERT_EQ(0, stat(tf.filename, &sb));
+  ASSERT_EQ(123, sb.st_size);
+}
+
+TEST(unistd, ftruncate) {
+  TemporaryFile tf;
+  ASSERT_EQ(0, ftruncate(tf.fd, 123));
+  ASSERT_EQ(0, close(tf.fd));
+
+  struct stat sb;
+  ASSERT_EQ(0, stat(tf.filename, &sb));
+  ASSERT_EQ(123, sb.st_size);
+}
+
+TEST(unistd, ftruncate64) {
+  TemporaryFile tf;
+  ASSERT_EQ(0, ftruncate64(tf.fd, 123));
+  ASSERT_EQ(0, close(tf.fd));
+
+  struct stat sb;
+  ASSERT_EQ(0, stat(tf.filename, &sb));
+  ASSERT_EQ(123, sb.st_size);
 }
