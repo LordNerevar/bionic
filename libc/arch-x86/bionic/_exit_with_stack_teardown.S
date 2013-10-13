@@ -1,7 +1,7 @@
 #include <asm/unistd.h>
 #include <machine/asm.h>
 
-// void _exit_with_stack_teardown(void* stackBase, size_t stackSize)
+// void _exit_with_stack_teardown(void* stackBase, size_t stackSize, int status)
 ENTRY(_exit_with_stack_teardown)
   // We can trash registers because this function never returns.
   mov 4(%esp), %ebx             // stackBase
