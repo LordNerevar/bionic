@@ -10,7 +10,6 @@ _LIBC_ARCH_COMMON_SRC_FILES := \
     arch-arm/bionic/kill.S \
     arch-arm/bionic/libgcc_compat.c \
     arch-arm/bionic/memcmp16.S \
-    arch-arm/bionic/memcmp.S \
     arch-arm/bionic/_setjmp.S \
     arch-arm/bionic/setjmp.S \
     arch-arm/bionic/sigsetjmp.S \
