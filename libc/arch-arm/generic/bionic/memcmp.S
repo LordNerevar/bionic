@@ -111,6 +111,9 @@ ENTRY(memcmp)
 
         /* save registers */
         stmfd       sp!, {r4, lr}
+        .cfi_def_cfa_offset 8
+        .cfi_rel_offset r4, 0
+        .cfi_rel_offset lr, 4
 
         /* since r0 hold the result, move the first source
          * pointer somewhere else
