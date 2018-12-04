@@ -4,7 +4,6 @@ $(call libc-add-cpu-variant-src,__STRCAT_CHK,arch-arm/denver/bionic/__strcat_chk
 $(call libc-add-cpu-variant-src,__STRCPY_CHK,arch-arm/denver/bionic/__strcpy_chk.S)
 $(call libc-add-cpu-variant-src,MEMCHR,arch-arm/cortex-a15/bionic/memchr.S)
 $(call libc-add-cpu-variant-src,MEMMOVE,arch-arm/denver/bionic/memmove.S)
-$(call libc-add-cpu-variant-src,BCOPY,)
 
 # Use cortex-a15 versions of strcat/strcpy/strlen.
 $(call libc-add-cpu-variant-src,STRCAT,arch-arm/cortex-a15/bionic/strcat.S)
